@@ -1,5 +1,8 @@
-import React, { FC, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+    FC, ReactNode, useCallback, useEffect, useRef, useState,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Portal } from 'shared/ui/Portal';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -57,12 +60,14 @@ export const Modal: FC<ModalProps> = (props: ModalProps) => {
     };
 
     return (
-        <div className={classNames(cls.Modal, mods, [className])}>
-            <div className={cls.Overlay} onClick={onCloseHandler}>
-                <div className={cls.Content} onClick={onContentClick}>
-                    {children}
+        <Portal>
+            <div className={classNames(cls.Modal, mods, [className])}>
+                <div className={cls.Overlay} onClick={onCloseHandler}>
+                    <div className={cls.Content} onClick={onContentClick}>
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Portal>
     );
 };
