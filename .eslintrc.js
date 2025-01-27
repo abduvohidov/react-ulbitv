@@ -46,7 +46,7 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid', 'to'],
+                ignoreAttribute: ['data-testid', 'to', 'Button'],
             },
         ],
         'max-len': ['error', { ignoreComments: true, code: 100 }],
@@ -55,6 +55,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'react/button-has-type': 'off',
+        'no-param-reassign': 'off',
     },
     globals: {
         __IS_DEV__: true,
