@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal/ui/Modal';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { LoginModal } from 'features/AuthByUsername';
+
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -13,8 +14,12 @@ export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
 
-    const onToggleModal = () => {
-        setIsAuthModal(!isAuthModal);
+    const onCloseModal = () => {
+        setIsAuthModal(false);
+    };
+
+    const onShowModal = () => {
+        setIsAuthModal(true);
     };
 
     return (
@@ -22,13 +27,15 @@ export const Navbar = ({ className }: NavbarProps) => {
             <Button
                 theme={ButtonTheme.CLEAR}
                 size={ButtonSize.M}
-                onClick={() => setIsAuthModal(true)}
+                onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>
-            <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-                lorem ipsum dolar sit
-            </Modal>
+
+            <LoginModal
+                isOpen={isAuthModal}
+                onClose={onCloseModal}
+            />
         </div>
     );
 };
