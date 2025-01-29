@@ -72,12 +72,19 @@ Square.args = {
     square: true,
 };
 
+
+export const Disabled = Template.bind({});
+Square.args = {
+    children: '>',
+    theme: ButtonTheme.OUTLINE,
+    square: true,
+};
+
 export const SquareSizeL = Template.bind({});
 SquareSizeL.args = {
     children: '>',
     theme: ButtonTheme.BACKGROUND_INVERTED,
-    square: true,
-    size: ButtonSize.L,
+    disabled: true,
 };
 
 export const SquareSizeXl = Template.bind({});

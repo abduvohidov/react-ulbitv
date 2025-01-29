@@ -17,6 +17,10 @@
     background: none;
 }
 
+.disabled {
+    opacity: 0.5;
+}
+
 .background {
     background: var(--bg-color);
     color: var(--primary-color);
